@@ -13,6 +13,19 @@
 		590F250221802A6200D41FB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 590F250121802A6200D41FB3 /* Assets.xcassets */; };
 		590F250521802A6200D41FB3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 590F250321802A6200D41FB3 /* LaunchScreen.storyboard */; };
 		590F250821802A6200D41FB3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 590F250721802A6200D41FB3 /* main.m */; };
+		590F251521802A9100D41FB3 /* libbigarray.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 590F250E21802A9100D41FB3 /* libbigarray.a */; };
+		590F251621802A9100D41FB3 /* libnums.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 590F250F21802A9100D41FB3 /* libnums.a */; };
+		590F251721802A9100D41FB3 /* libunix.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 590F251021802A9100D41FB3 /* libunix.a */; };
+		590F251821802A9100D41FB3 /* libasmrun.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 590F251121802A9100D41FB3 /* libasmrun.a */; };
+		590F251B21802A9100D41FB3 /* libcamlstr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 590F251421802A9100D41FB3 /* libcamlstr.a */; };
+		590F259C21802C4000D41FB3 /* CQ_stubs.m in Sources */ = {isa = PBXBuildFile; fileRef = 590F259721802C4000D41FB3 /* CQ_stubs.m */; };
+		590F259D21802C4000D41FB3 /* CQWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 590F259821802C4000D41FB3 /* CQWrapper.m */; };
+		590F259E21802C4000D41FB3 /* CQ_convert.m in Sources */ = {isa = PBXBuildFile; fileRef = 590F259B21802C4000D41FB3 /* CQ_convert.m */; };
+		590F25A121802C6100D41FB3 /* CQUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 590F25A021802C6100D41FB3 /* CQUtil.m */; };
+		590F25A721803B0300D41FB3 /* libthreadsnat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 590F25A621803B0200D41FB3 /* libthreadsnat.a */; };
+		594BFE132181CF2B000E3920 /* lzmaSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 594BFE122181CF2B000E3920 /* lzmaSDK.framework */; };
+		5977C6C52181B80500EBDEE4 /* coqios.o in Frameworks */ = {isa = PBXBuildFile; fileRef = 5977C6C42181B80500EBDEE4 /* coqios.o */; };
+		5977C6D72181C45800EBDEE4 /* coq-8.8.2-standard-libs-for-coq4ios.7z in Resources */ = {isa = PBXBuildFile; fileRef = 5977C6D62181C45700EBDEE4 /* coq-8.8.2-standard-libs-for-coq4ios.7z */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +39,23 @@
 		590F250421802A6200D41FB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		590F250621802A6200D41FB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		590F250721802A6200D41FB3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		590F250E21802A9100D41FB3 /* libbigarray.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbigarray.a; path = "../../../.opam1.2/4.04.0/ios-sysroot/lib/ocaml/libbigarray.a"; sourceTree = "<group>"; };
+		590F250F21802A9100D41FB3 /* libnums.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnums.a; path = "../../../.opam1.2/4.04.0/ios-sysroot/lib/ocaml/libnums.a"; sourceTree = "<group>"; };
+		590F251021802A9100D41FB3 /* libunix.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libunix.a; path = "../../../.opam1.2/4.04.0/ios-sysroot/lib/ocaml/libunix.a"; sourceTree = "<group>"; };
+		590F251121802A9100D41FB3 /* libasmrun.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libasmrun.a; path = "../../../.opam1.2/4.04.0/ios-sysroot/lib/ocaml/libasmrun.a"; sourceTree = "<group>"; };
+		590F251421802A9100D41FB3 /* libcamlstr.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcamlstr.a; path = "../../../.opam1.2/4.04.0/ios-sysroot/lib/ocaml/libcamlstr.a"; sourceTree = "<group>"; };
+		590F259721802C4000D41FB3 /* CQ_stubs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQ_stubs.m; sourceTree = "<group>"; };
+		590F259821802C4000D41FB3 /* CQWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQWrapper.m; sourceTree = "<group>"; };
+		590F259921802C4000D41FB3 /* CQWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQWrapper.h; sourceTree = "<group>"; };
+		590F259A21802C4000D41FB3 /* CQ_convert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQ_convert.h; sourceTree = "<group>"; };
+		590F259B21802C4000D41FB3 /* CQ_convert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQ_convert.m; sourceTree = "<group>"; };
+		590F259F21802C6000D41FB3 /* CQUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQUtil.h; sourceTree = "<group>"; };
+		590F25A021802C6100D41FB3 /* CQUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQUtil.m; sourceTree = "<group>"; };
+		590F25A621803B0200D41FB3 /* libthreadsnat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libthreadsnat.a; path = "../../../.opam1.2/4.04.0/ios-sysroot/lib/ocaml/libthreadsnat.a"; sourceTree = "<group>"; };
+		594BFE122181CF2B000E3920 /* lzmaSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = lzmaSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5977C6C42181B80500EBDEE4 /* coqios.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = coqios.o; path = "coq-src/coqios.o"; sourceTree = SOURCE_ROOT; };
+		5977C6D22181C1BB00EBDEE4 /* lzmaSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = lzmaSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5977C6D62181C45700EBDEE4 /* coq-8.8.2-standard-libs-for-coq4ios.7z */ = {isa = PBXFileReference; lastKnownFileType = file; path = "coq-8.8.2-standard-libs-for-coq4ios.7z"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +63,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				594BFE132181CF2B000E3920 /* lzmaSDK.framework in Frameworks */,
+				590F251621802A9100D41FB3 /* libnums.a in Frameworks */,
+				5977C6C52181B80500EBDEE4 /* coqios.o in Frameworks */,
+				590F251521802A9100D41FB3 /* libbigarray.a in Frameworks */,
+				590F251721802A9100D41FB3 /* libunix.a in Frameworks */,
+				590F25A721803B0300D41FB3 /* libthreadsnat.a in Frameworks */,
+				590F251821802A9100D41FB3 /* libasmrun.a in Frameworks */,
+				590F251B21802A9100D41FB3 /* libcamlstr.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +82,7 @@
 			children = (
 				590F24F721802A6000D41FB3 /* Coq4iOS2 */,
 				590F24F621802A6000D41FB3 /* Products */,
+				5977C6CF2181C0D900EBDEE4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,8 +106,32 @@
 				590F250321802A6200D41FB3 /* LaunchScreen.storyboard */,
 				590F250621802A6200D41FB3 /* Info.plist */,
 				590F250721802A6200D41FB3 /* main.m */,
+				590F259F21802C6000D41FB3 /* CQUtil.h */,
+				590F25A021802C6100D41FB3 /* CQUtil.m */,
+				590F259921802C4000D41FB3 /* CQWrapper.h */,
+				590F259821802C4000D41FB3 /* CQWrapper.m */,
+				590F259721802C4000D41FB3 /* CQ_stubs.m */,
+				590F259A21802C4000D41FB3 /* CQ_convert.h */,
+				590F259B21802C4000D41FB3 /* CQ_convert.m */,
+				590F250F21802A9100D41FB3 /* libnums.a */,
+				590F251121802A9100D41FB3 /* libasmrun.a */,
+				590F250E21802A9100D41FB3 /* libbigarray.a */,
+				590F251421802A9100D41FB3 /* libcamlstr.a */,
+				590F25A621803B0200D41FB3 /* libthreadsnat.a */,
+				590F251021802A9100D41FB3 /* libunix.a */,
+				5977C6C42181B80500EBDEE4 /* coqios.o */,
+				5977C6D62181C45700EBDEE4 /* coq-8.8.2-standard-libs-for-coq4ios.7z */,
 			);
 			path = Coq4iOS2;
+			sourceTree = "<group>";
+		};
+		5977C6CF2181C0D900EBDEE4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				594BFE122181CF2B000E3920 /* lzmaSDK.framework */,
+				5977C6D22181C1BB00EBDEE4 /* lzmaSDK.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,6 +194,7 @@
 				590F250521802A6200D41FB3 /* LaunchScreen.storyboard in Resources */,
 				590F250221802A6200D41FB3 /* Assets.xcassets in Resources */,
 				590F250021802A6000D41FB3 /* Main.storyboard in Resources */,
+				5977C6D72181C45800EBDEE4 /* coq-8.8.2-standard-libs-for-coq4ios.7z in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,8 +206,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				590F24FD21802A6000D41FB3 /* ViewController.m in Sources */,
+				590F259C21802C4000D41FB3 /* CQ_stubs.m in Sources */,
+				590F25A121802C6100D41FB3 /* CQUtil.m in Sources */,
 				590F250821802A6200D41FB3 /* main.m in Sources */,
+				590F259E21802C4000D41FB3 /* CQ_convert.m in Sources */,
 				590F24FA21802A6000D41FB3 /* AppDelegate.m in Sources */,
+				590F259D21802C4000D41FB3 /* CQWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,11 +352,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = "/Users/keigoi/.opam1.2/4.04.0/ios-sysroot/lib/ocaml";
 				INFOPLIST_FILE = Coq4iOS2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = "/Users/keigoi/.opam1.2/4.04.0/ios-sysroot/lib/ocaml";
 				PRODUCT_BUNDLE_IDENTIFIER = info.keigoimai.Coq4iOS2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -300,11 +370,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = "/Users/keigoi/.opam1.2/4.04.0/ios-sysroot/lib/ocaml";
 				INFOPLIST_FILE = Coq4iOS2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = "/Users/keigoi/.opam1.2/4.04.0/ios-sysroot/lib/ocaml";
 				PRODUCT_BUNDLE_IDENTIFIER = info.keigoimai.Coq4iOS2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

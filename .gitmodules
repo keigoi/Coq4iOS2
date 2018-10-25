@@ -1,0 +1,6 @@
+[submodule "coq-src"]
+	path = coq-src
+	url = https://github.com/keigoi/coq.git
+[submodule "lzmaSDK"]
+	path = lzmaSDK
+	url = https://github.com/mdejong/lzmaSDK.git
