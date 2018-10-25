@@ -44,19 +44,19 @@ opam1.2 install ocaml-ios64 は， system() を参照するところで止まっ
 代わりに私のリポジトリを使う．
 
 ```
-git clone -b 4.04.0+ios+XCode9.3.1 https://github.com/keigoi/ocaml.git
-cd ocaml
-opam pin add ocaml-ios64 . 
+git clone -b 4.04.0+ios+XCode9.3.1 https://github.com/keigoi/ocaml.git ocaml-ios64.4.04.0
+cd ocaml-ios64.4.04.0
+opam1.2 pin add ocaml-ios64 .
 ```
 
 ```
-opam install ocaml-ios
+opam1.2 install ocaml-ios
 ```
 
 # ホストの CamlP5 を入れる
 
 ```
-opam install camlp5.7.0.6
+opam1.2 install camlp5.7.06
 ```
 
 # ターゲットの CamlP5 を入れる
@@ -64,20 +64,26 @@ opam install camlp5.7.0.6
 ## CamlP5 に必要なダミーの Dynlinks モジュールをインストールする
 
 ```
-mkdir tmp
+pushd /tmp
 wget https://raw.githubusercontent.com/coq/coq/v8.8/dev/dynlink.ml
+export ORIG_PATH=$PATH
+export PATH=~/.opam1.2/4.04.0/bin:$PATH
 ocamlfind -toolchain ios ocamlc -a -o dynlink.cma dynlink.ml
 ocamlfind -toolchain ios ocamlopt -a -o dynlink.cmxa dynlink.ml
 cp -i dynlink.* `ocamlfind -toolchain ios ocamlc -where`
+popd
 ```
 
 ## CamlP5 のソースをダウンロードしてビルドしてインストール
 
+(ホストOCaml にパスが通っているとうまくいかない リンク時に警告)
+
 ```
-git clone -b ios https://github.com/keigoi/camlp5.git
-export PATH=~/.opam1.2/4.04.0/ios-sysroot/bin:$PATH
+git clone -b ios https://github.com/keigoi/camlp5.git camlp5-ios
+cd camlp5-ios
+export PATH=~/.opam1.2/4.04.0/ios-sysroot/bin:$ORIG_PATH
 ./configure
-make world.opt
+make -j8 world.opt
 make install
 ln -s ~/.opam1.2/4.04.0/ios-sysroot/lib/ocaml/camlp5 ~/.opam1.2/4.04.0/ios-sysroot/lib/
 ```
@@ -87,7 +93,8 @@ ln -s ~/.opam1.2/4.04.0/ios-sysroot/lib/ocaml/camlp5 ~/.opam1.2/4.04.0/ios-sysro
 # このリポジトリを clone して Coq をクロスコンパイルする
 
 ```
-git clone https://github.com/keigoi/Coq4iOS2.git 
+git clone https://github.com/keigoi/Coq4iOS2.git
+cd Coq4iOS2
 git submodule update --init
 ```
 
@@ -125,6 +132,5 @@ VERBOSE=1 make -j8 -f Makefile.build coqios.o
 
 Coq4iOS-workspace.xcworkspace をダブルクリック。
 
-まだ動いていない。コンソールに Coq のプロンプトが表示されたら成功。
-
-
+まだまともに動いていない。
+ビルドして，シミュレータ起動後，Xcode のコンソールに Coq のプロンプトが表示されたら成功。
