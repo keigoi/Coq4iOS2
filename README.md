@@ -56,12 +56,22 @@ opam1.2 install ocaml-ios
 # ホストの CamlP5 を入れる
 
 ```
-opam1.2 install camlp5.7.06
+opam1.2 install -j8 camlp5.7.06
 ```
 
 # ターゲットの CamlP5 を入れる
 
 ## CamlP5 に必要なダミーの Dynlinks モジュールをインストールする
+
+```
+function reset_path {
+  if [ "$(bash -c 'echo ${ORIG_PATH}')" ]; then
+    export PATH=$ORIG_PATH;
+  else
+    echo 'no ORIG_PATH'
+  fi
+}
+```
 
 ```
 pushd /tmp
@@ -81,7 +91,8 @@ popd
 ```
 git clone -b ios https://github.com/keigoi/camlp5.git camlp5-ios
 cd camlp5-ios
-export PATH=~/.opam1.2/4.04.0/ios-sysroot/bin:$ORIG_PATH
+reset_path
+export PATH=~/.opam1.2/4.04.0/ios-sysroot/bin:$PATH
 ./configure
 make -j8 world.opt
 make install
@@ -102,6 +113,7 @@ git submodule update --init
 
 ```
 cd coq-src
+reset_path
 unset OCAMLFIND_TOOLCHAIN
 export PATH=~/.opam1.2/4.04.0/bin:$PATH
 ./configure -local -with-doc no -coqide no -natdynlink no
