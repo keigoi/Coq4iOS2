@@ -32,3 +32,8 @@ setup.log
 .merlin
 
 *~
+
+.DS_Store
+
+Coq4iOS2.xcodeproj/xcuserdata
+Coq4iOS-workspace.xcworkspace/xcuserdata
