@@ -71,7 +71,7 @@ ocamlfind -toolchain ios ocamlopt -a -o dynlink.cmxa dynlink.ml
 cp -i dynlink.* `ocamlfind -toolchain ios ocamlc -where`
 ```
 
-## CamlP5 のソースをダウンロードする
+## CamlP5 のソースをダウンロードしてビルドしてインストール
 
 ```
 git clone -b ios https://github.com/keigoi/camlp5.git
