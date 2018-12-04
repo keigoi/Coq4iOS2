@@ -340,13 +340,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				HEADER_SEARCH_PATHS = "/Users/sou/.opam1.2/4.04.0/ios-sysroot/lib/ocaml";
+				HEADER_SEARCH_PATHS = "$(HOME)/.opam1.2/4.04.0/ios-sysroot/lib/ocaml";
 				INFOPLIST_FILE = Coq4iOS2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = "/Users/keigoi/.opam1.2/4.04.0/ios-sysroot/lib/ocaml";
+				LIBRARY_SEARCH_PATHS = "$(HOME)/.opam1.2/4.04.0/ios-sysroot/lib/ocaml";
 				PRODUCT_BUNDLE_IDENTIFIER = info.keigoimai.Coq4iOS2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -358,13 +358,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				HEADER_SEARCH_PATHS = "/Users/sou/.opam1.2/4.04.0/ios-sysroot/lib/ocaml";
+				HEADER_SEARCH_PATHS = "$(HOME)/.opam1.2/4.04.0/ios-sysroot/lib/ocaml";
 				INFOPLIST_FILE = Coq4iOS2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = "/Users/keigoi/.opam1.2/4.04.0/ios-sysroot/lib/ocaml";
+				LIBRARY_SEARCH_PATHS = "$(HOME)/.opam1.2/4.04.0/ios-sysroot/lib/ocaml";
 				PRODUCT_BUNDLE_IDENTIFIER = info.keigoimai.Coq4iOS2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
