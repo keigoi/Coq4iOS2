@@ -1,0 +1,403 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		830D8F9A218FFD8000F690DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830D8F99218FFD8000F690DD /* AppDelegate.swift */; };
+		830D8F9C218FFD8000F690DD /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830D8F9B218FFD8000F690DD /* MasterViewController.swift */; };
+		830D8F9E218FFD8000F690DD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830D8F9D218FFD8000F690DD /* DetailViewController.swift */; };
+		830D8FA1218FFD8000F690DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 830D8F9F218FFD8000F690DD /* Main.storyboard */; };
+		830D8FA3218FFD8100F690DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 830D8FA2218FFD8100F690DD /* Assets.xcassets */; };
+		830D8FA6218FFD8100F690DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 830D8FA4218FFD8100F690DD /* LaunchScreen.storyboard */; };
+		8361D8AB219000E700E04C48 /* libunix.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8361D8A5219000E700E04C48 /* libunix.a */; };
+		8361D8AC219000E700E04C48 /* libbigarray.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8361D8A6219000E700E04C48 /* libbigarray.a */; };
+		8361D8AD219000E700E04C48 /* libasmrun.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8361D8A7219000E700E04C48 /* libasmrun.a */; };
+		8361D8AE219000E700E04C48 /* libnums.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8361D8A8219000E700E04C48 /* libnums.a */; };
+		8361D8AF219000E700E04C48 /* libthreadsnat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8361D8A9219000E700E04C48 /* libthreadsnat.a */; };
+		8361D8B0219000E700E04C48 /* libcamlstr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8361D8AA219000E700E04C48 /* libcamlstr.a */; };
+		8361D8B22190013400E04C48 /* coqios.o in Frameworks */ = {isa = PBXBuildFile; fileRef = 8361D8B12190013400E04C48 /* coqios.o */; };
+		8361D8B42190014000E04C48 /* coq-8.8.2-standard-libs-for-coq4ios.7z in Resources */ = {isa = PBXBuildFile; fileRef = 8361D8B32190014000E04C48 /* coq-8.8.2-standard-libs-for-coq4ios.7z */; };
+		8361D8C22190060200E04C48 /* CoqUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8361D8C12190060200E04C48 /* CoqUtil.m */; };
+		8361D8C621900AB400E04C48 /* lzmaSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8361D8C521900AB400E04C48 /* lzmaSDK.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		830D8F96218FFD8000F690DD /* Coq4iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coq4iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		830D8F99218FFD8000F690DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		830D8F9B218FFD8000F690DD /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		830D8F9D218FFD8000F690DD /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		830D8FA0218FFD8000F690DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		830D8FA2218FFD8100F690DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		830D8FA5218FFD8100F690DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		830D8FA7218FFD8100F690DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8361D8A5219000E700E04C48 /* libunix.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libunix.a; path = "../../../.opam1.2/4.04.0/ios-sysroot/lib/ocaml/libunix.a"; sourceTree = "<group>"; };
+		8361D8A6219000E700E04C48 /* libbigarray.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbigarray.a; path = "../../../.opam1.2/4.04.0/ios-sysroot/lib/ocaml/libbigarray.a"; sourceTree = "<group>"; };
+		8361D8A7219000E700E04C48 /* libasmrun.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libasmrun.a; path = "../../../.opam1.2/4.04.0/ios-sysroot/lib/ocaml/libasmrun.a"; sourceTree = "<group>"; };
+		8361D8A8219000E700E04C48 /* libnums.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnums.a; path = "../../../.opam1.2/4.04.0/ios-sysroot/lib/ocaml/libnums.a"; sourceTree = "<group>"; };
+		8361D8A9219000E700E04C48 /* libthreadsnat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libthreadsnat.a; path = "../../../.opam1.2/4.04.0/ios-sysroot/lib/ocaml/libthreadsnat.a"; sourceTree = "<group>"; };
+		8361D8AA219000E700E04C48 /* libcamlstr.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcamlstr.a; path = "../../../.opam1.2/4.04.0/ios-sysroot/lib/ocaml/libcamlstr.a"; sourceTree = "<group>"; };
+		8361D8B12190013400E04C48 /* coqios.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = coqios.o; path = "../../coq-src/coqios.o"; sourceTree = "<group>"; };
+		8361D8B32190014000E04C48 /* coq-8.8.2-standard-libs-for-coq4ios.7z */ = {isa = PBXFileReference; lastKnownFileType = file; name = "coq-8.8.2-standard-libs-for-coq4ios.7z"; path = "../../coq-8.8.2-standard-libs-for-coq4ios.7z"; sourceTree = "<group>"; };
+		8361D8B52190017100E04C48 /* Coq4iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Coq4iOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		8361D8C12190060200E04C48 /* CoqUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoqUtil.m; sourceTree = "<group>"; };
+		8361D8C32190061400E04C48 /* CoqUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoqUtil.h; sourceTree = "<group>"; };
+		8361D8C521900AB400E04C48 /* lzmaSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = lzmaSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		830D8F93218FFD8000F690DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8361D8C621900AB400E04C48 /* lzmaSDK.framework in Frameworks */,
+				8361D8AD219000E700E04C48 /* libasmrun.a in Frameworks */,
+				8361D8B22190013400E04C48 /* coqios.o in Frameworks */,
+				8361D8AC219000E700E04C48 /* libbigarray.a in Frameworks */,
+				8361D8B0219000E700E04C48 /* libcamlstr.a in Frameworks */,
+				8361D8AE219000E700E04C48 /* libnums.a in Frameworks */,
+				8361D8AF219000E700E04C48 /* libthreadsnat.a in Frameworks */,
+				8361D8AB219000E700E04C48 /* libunix.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		830D8F8D218FFD7F00F690DD = {
+			isa = PBXGroup;
+			children = (
+				830D8F98218FFD8000F690DD /* Coq4iOS */,
+				830D8F97218FFD8000F690DD /* Products */,
+				8361D8C421900AB400E04C48 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		830D8F97218FFD8000F690DD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				830D8F96218FFD8000F690DD /* Coq4iOS.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		830D8F98218FFD8000F690DD /* Coq4iOS */ = {
+			isa = PBXGroup;
+			children = (
+				830D8F99218FFD8000F690DD /* AppDelegate.swift */,
+				830D8F9B218FFD8000F690DD /* MasterViewController.swift */,
+				830D8F9D218FFD8000F690DD /* DetailViewController.swift */,
+				8361D8C32190061400E04C48 /* CoqUtil.h */,
+				8361D8C12190060200E04C48 /* CoqUtil.m */,
+				8361D8B52190017100E04C48 /* Coq4iOS-Bridging-Header.h */,
+				830D8F9F218FFD8000F690DD /* Main.storyboard */,
+				830D8FA2218FFD8100F690DD /* Assets.xcassets */,
+				830D8FA4218FFD8100F690DD /* LaunchScreen.storyboard */,
+				830D8FA7218FFD8100F690DD /* Info.plist */,
+				8361D8A7219000E700E04C48 /* libasmrun.a */,
+				8361D8A6219000E700E04C48 /* libbigarray.a */,
+				8361D8AA219000E700E04C48 /* libcamlstr.a */,
+				8361D8A8219000E700E04C48 /* libnums.a */,
+				8361D8A9219000E700E04C48 /* libthreadsnat.a */,
+				8361D8A5219000E700E04C48 /* libunix.a */,
+				8361D8B12190013400E04C48 /* coqios.o */,
+				8361D8B32190014000E04C48 /* coq-8.8.2-standard-libs-for-coq4ios.7z */,
+			);
+			path = Coq4iOS;
+			sourceTree = "<group>";
+		};
+		8361D8C421900AB400E04C48 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8361D8C521900AB400E04C48 /* lzmaSDK.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		830D8F95218FFD8000F690DD /* Coq4iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 830D8FAA218FFD8100F690DD /* Build configuration list for PBXNativeTarget "Coq4iOS" */;
+			buildPhases = (
+				830D8F92218FFD8000F690DD /* Sources */,
+				830D8F93218FFD8000F690DD /* Frameworks */,
+				830D8F94218FFD8000F690DD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Coq4iOS;
+			productName = Coq4iOS;
+			productReference = 830D8F96218FFD8000F690DD /* Coq4iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		830D8F8E218FFD7F00F690DD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = "後藤宗一朗";
+				TargetAttributes = {
+					830D8F95218FFD8000F690DD = {
+						CreatedOnToolsVersion = 9.3.1;
+						LastSwiftMigration = 0930;
+					};
+				};
+			};
+			buildConfigurationList = 830D8F91218FFD7F00F690DD /* Build configuration list for PBXProject "Coq4iOS" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 830D8F8D218FFD7F00F690DD;
+			productRefGroup = 830D8F97218FFD8000F690DD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				830D8F95218FFD8000F690DD /* Coq4iOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		830D8F94218FFD8000F690DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				830D8FA6218FFD8100F690DD /* LaunchScreen.storyboard in Resources */,
+				830D8FA3218FFD8100F690DD /* Assets.xcassets in Resources */,
+				830D8FA1218FFD8000F690DD /* Main.storyboard in Resources */,
+				8361D8B42190014000E04C48 /* coq-8.8.2-standard-libs-for-coq4ios.7z in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		830D8F92218FFD8000F690DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				830D8F9E218FFD8000F690DD /* DetailViewController.swift in Sources */,
+				830D8F9C218FFD8000F690DD /* MasterViewController.swift in Sources */,
+				8361D8C22190060200E04C48 /* CoqUtil.m in Sources */,
+				830D8F9A218FFD8000F690DD /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		830D8F9F218FFD8000F690DD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				830D8FA0218FFD8000F690DD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		830D8FA4218FFD8100F690DD /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				830D8FA5218FFD8100F690DD /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		830D8FA8218FFD8100F690DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		830D8FA9218FFD8100F690DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		830D8FAB218FFD8100F690DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = "~/.opam1.2/4.04.0/ios-sysroot/lib/ocaml";
+				INFOPLIST_FILE = Coq4iOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = "~/.opam1.2/4.04.0/ios-sysroot/lib/ocaml";
+				PRODUCT_BUNDLE_IDENTIFIER = sou.jp.Coq4iOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Coq4iOS/Coq4iOS-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		830D8FAC218FFD8100F690DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = "~/.opam1.2/4.04.0/ios-sysroot/lib/ocaml";
+				INFOPLIST_FILE = Coq4iOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = "~/.opam1.2/4.04.0/ios-sysroot/lib/ocaml";
+				PRODUCT_BUNDLE_IDENTIFIER = sou.jp.Coq4iOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Coq4iOS/Coq4iOS-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		830D8F91218FFD7F00F690DD /* Build configuration list for PBXProject "Coq4iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				830D8FA8218FFD8100F690DD /* Debug */,
+				830D8FA9218FFD8100F690DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		830D8FAA218FFD8100F690DD /* Build configuration list for PBXNativeTarget "Coq4iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				830D8FAB218FFD8100F690DD /* Debug */,
+				830D8FAC218FFD8100F690DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 830D8F8E218FFD7F00F690DD /* Project object */;
+}

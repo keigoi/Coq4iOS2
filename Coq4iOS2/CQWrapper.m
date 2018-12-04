@@ -69,7 +69,7 @@ static void caml_dispatch(dispatch_block_t block)
     caml_dispatch(^{
         CAMLparam0();
         CAMLlocal1(res);
-        NSLog(@"startCoq:%@", coqroot);
+        NS Log(@"startCoq:%@", coqroot);
         const char* path = [coqroot cStringUsingEncoding:NSASCIIStringEncoding];
         res = caml_callback(*caml_named_value("start"), caml_copy_string(path));
         ready = YES;
