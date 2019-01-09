@@ -37,7 +37,7 @@ opam1.2 repository add ios https://github.com/ocaml-cross/opam-cross-ios.git
 ## OCaml-iOS のコンパイル  (シミュレータ版)
 
 ```
-ARCH=amd64 SUBARCH=x86_64 PLATFORM=iPhoneSimulator SDK=11.3 VER=8.0 opam install conf-ios
+ARCH=amd64 SUBARCH=x86_64 PLATFORM=iPhoneSimulator SDK=11.3 VER=8.0 opam1.2 install conf-ios
 ```
 
 opam1.2 install ocaml-ios64 は， system() を参照するところで止まってうまくいかない．
