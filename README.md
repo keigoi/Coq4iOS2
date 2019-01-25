@@ -114,7 +114,6 @@ git submodule update --init
 export OPAMROOT=~/.opam1.2
 
 cd coq-src
-reset_path
 unset OCAMLFIND_TOOLCHAIN
 export ORIG_PATH=$PATH
 export PATH=~/.opam1.2/4.04.0/bin:$ORIG_PATH
