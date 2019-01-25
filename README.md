@@ -25,6 +25,12 @@ OPAM の初期化
 opam1.2 init -j8 --comp=4.04.0
 ```
 
+OCaml にパスが通ってない状態
+
+```
+$ ocaml
+ocaml: error: Cannot execute ocaml: No such file or directory
+```
 
 # OCaml-iOS を入れる
 
@@ -64,39 +70,32 @@ opam1.2 install -j8 camlp5.7.06
 ## CamlP5 に必要なダミーの Dynlinks モジュールをインストールする
 
 ```
-function reset_path {
-  if [ "$(bash -c 'echo ${ORIG_PATH}')" ]; then
-    export PATH=$ORIG_PATH;
-  else
-    echo 'no ORIG_PATH'
-  fi
-}
-```
-
-```
 pushd /tmp
 wget https://raw.githubusercontent.com/coq/coq/v8.8/dev/dynlink.ml
 export ORIG_PATH=$PATH
-export PATH=~/.opam1.2/4.04.0/bin:$PATH
+export PATH=~/.opam1.2/4.04.0/bin:$ORIG_PATH
 ocamlfind -toolchain ios ocamlc -a -o dynlink.cma dynlink.ml
 ocamlfind -toolchain ios ocamlopt -a -o dynlink.cmxa dynlink.ml
 cp -i dynlink.* `ocamlfind -toolchain ios ocamlc -where`
+export PATH=$ORIG_PATH
 popd
 ```
 
-## CamlP5 のソースをダウンロードしてビルドしてインストール
+## CamlP5 のソースをダウンロードして iOS 向けビルドしてインストール
 
 (ホストOCaml にパスが通っているとうまくいかない リンク時に警告)
 
 ```
 git clone -b ios https://github.com/keigoi/camlp5.git camlp5-ios
-cd camlp5-ios
-reset_path
-export PATH=~/.opam1.2/4.04.0/ios-sysroot/bin:$PATH
+pushd camlp5-ios
+export ORIG_PATH=$PATH
+export PATH=~/.opam1.2/4.04.0/ios-sysroot/bin:$ORIG_PATH
 ./configure
 make -j8 world.opt
 make install
 ln -s ~/.opam1.2/4.04.0/ios-sysroot/lib/ocaml/camlp5 ~/.opam1.2/4.04.0/ios-sysroot/lib/
+export PATH=$ORIG_PATH
+popd
 ```
 
 (最後のやつは iOS 側の ocamlfind でうまく参照するのに必要 FIXME)
@@ -112,12 +111,16 @@ git submodule update --init
 ## coqdep-boot  だけビルドする
 
 ```
+export OPAMROOT=~/.opam1.2
+
 cd coq-src
 reset_path
 unset OCAMLFIND_TOOLCHAIN
-export PATH=~/.opam1.2/4.04.0/bin:$PATH
+export ORIG_PATH=$PATH
+export PATH=~/.opam1.2/4.04.0/bin:$ORIG_PATH
 ./configure -local -with-doc no -coqide no -natdynlink no
 make -j8 bin/coqdep_boot
+export PATH=$ORIG_PATH
 ```
 
 なぜかこいつらだけ再コンパイルされないので消す
@@ -135,9 +138,13 @@ git checkout clib
 
 ```
 export OCAMLFIND_TOOLCHAIN=ios
+export ORIG_PATH=$PATH
+export PATH=~/.opam1.2/4.04.0/bin:$ORIG_PATH # <-- ??
 
 ./configure -local -with-doc no -coqide no -natdynlink no
 VERBOSE=1 make -j8 -f Makefile.build coqios.o
+
+export PATH=$ORIG_PATH
 ```
 
 # Coq4iOS をビルドする
