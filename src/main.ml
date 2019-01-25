@@ -18,6 +18,9 @@ let opts () =
   | Some o -> o
   | None -> raise Not_found
 
+let () =
+  ignore (Feedback.add_feeder Coqloop.coqloop_feed)
+
 let init_stdout,read_stdout =
   let out_buff = Buffer.create 1024 (*magic number*) in
   let out_ft = Format.formatter_of_buffer out_buff in
@@ -29,7 +32,7 @@ let init_stdout,read_stdout =
      flush_all ();
      orig_stdout := Unix.out_channel_of_descr (Unix.dup Unix.stdout);
      Unix.dup2 outp Unix.stdout;
-     Unix.dup2 outp Unix.stderr;
+     (* Unix.dup2 outp Unix.stderr; *)
      Topfmt.std_ft := out_ft;
      Topfmt.err_ft := out_ft;
      Topfmt.deep_ft := deep_out_ft;
@@ -80,23 +83,56 @@ let next_phrase_range str =
   with
     | _ -> (*FIXME return error msg*) -1, -1
 
+let pr_open_cur_subgoals () =
+  try
+    let proof = Proof_global.give_me_the_proof () in
+    Printer.pr_open_subgoals ~proof
+  with Proof_global.NoCurrentProof -> Pp.str ""
+
+let flush_all () =
+  Pervasives.flush stderr;
+  Pervasives.flush stdout;
+  Format.pp_print_flush !Topfmt.std_ft ();
+  Format.pp_print_flush !Topfmt.err_ft ()
+
 let eval ?(raw=false) (str:string) : bool * string =
   let po = parsable_of_string str in
   try
     let last = parse_sentence (po, None) in
     if not raw && Vernacprop.is_navigation_vernac last.CAst.v then
-      false, "Please use navigation buttons instead."
+      (prerr_endline "not a command\n";
+      false, "Please use navigation buttons instead.")
     else begin
+      prerr_endline "okay\n";
       coqstate := Some (V.process_expr ~time:(opts ()).Coqargs.time ~state:(state ()) last);
-      true, ""
+      Feedback.msg_notice (pr_open_cur_subgoals ());
+      flush_all();
+      true, read_stdout ()
     end
   with
     (* | V.End_of_input -> (false, "end of input") *)
     (* | V.DuringCommandInterp (loc, exn) ->
      *     let msg = Printf.sprintf "error at (%d,%d) %s" (L.first_pos loc) (L.last_pos loc) (Pp.string_of_ppcmds (Errors.print exn)) in
      *     (false, msg) *)
-    | e ->
-        (false, Printexc.to_string e)
+  | e ->
+     prerr_endline "exception\n";
+     (false, Printexc.to_string e)
+
+let pr_open_cur_subgoals () =
+  try
+    let proof = Proof_global.give_me_the_proof () in
+    Printer.pr_open_subgoals ~proof
+  with Proof_global.NoCurrentProof -> Pp.str ""
+
+(* Goal equality heuristic. *)
+let pequal cmp1 cmp2 (a1,a2) (b1,b2) = cmp1 a1 b1 && cmp2 a2 b2
+let evleq e1 e2 = CList.equal Evar.equal e1 e2
+let cproof p1 p2 =
+  let (a1,a2,a3,a4,_),(b1,b2,b3,b4,_) = Proof.proof p1, Proof.proof p2 in
+  evleq a1 b1 &&
+  CList.equal (pequal evleq evleq) a2 b2 &&
+  CList.equal Evar.equal a3 b3 &&
+  CList.equal Evar.equal a4 b4
 
 let string_of_compile_exn (file, (_,_,loc), exn) =
   let detail =
@@ -127,6 +163,7 @@ let reset_initial () = eval ~raw:true "Reset Initial.\n"
 
 let start root =
   print_endline "start.";
+  init_stdout();
   let state, opts = Coqtop.init_toplevel ["-coqlib"; root] in
   coqstate := state;
   coqopts := Some opts;
@@ -151,6 +188,7 @@ Callback.register "start" start;
 Callback.register "eval" (fun str -> eval str);
 Callback.register "next_phranse_range" next_phrase_range;
 Callback.register "reset_initial" reset_initial;
+Callback.register "read_stdout" read_stdout;
 (* Callback.register "compile" compile; *)
 (* Callback.register "parse" parse; *)
 (* Callback.register "rewind" rewind; *)

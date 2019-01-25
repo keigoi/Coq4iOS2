@@ -35,7 +35,9 @@ setup.log
 
 .DS_Store
 
-Coq4iOS2.xcodeproj/xcuserdata
 Coq4iOS-workspace.xcworkspace/xcuserdata
+Coq4iOS.xcodeproj/xcuserdata
+Coq4iOS.xcodeproj/project.xcworkspace/xcuserdata/
+Coq4iOS2.xcodeproj/xcuserdata
 Coq4iOS2.xcodeproj/project.xcworkspace/xcuserdata/
 

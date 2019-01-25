@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Darwin
+
 
 class MasterViewController: UITableViewController {
 
@@ -26,6 +28,16 @@ class MasterViewController: UITableViewController {
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
         startCoq()
+        readStdout({(msg:String?) -> Void in
+            fputs(msg, stderr)
+        });
+        eval("Theorem id: forall A, A -> A.", {(res:Bool, ans:String?) -> Void in
+            fputs(ans, stderr);
+        });
+        eval("Check fun(X:Set)(x:X) => x.", {(res:Bool, ans:String?) -> Void in
+            fputs(ans, stderr);
+        });
+
     }
 
     override func viewWillAppear(_ animated: Bool) {

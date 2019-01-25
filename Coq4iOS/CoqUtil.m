@@ -40,6 +40,20 @@ static NSString* coqRoot() {
     return [dir stringByAppendingPathComponent:@"coq-8.8.2"];
 }
 
+static void startCoqBody() {
+    dispatch_async(camlQueue, ^{
+        CAMLparam0();
+        CAMLlocal1(res);
+        NSString* coqroot = coqRoot();
+        const char* path = [coqroot cStringUsingEncoding:NSASCIIStringEncoding];
+        
+        value* startFunc = caml_named_value("start");
+        res = caml_callback(*startFunc, caml_copy_string(path));
+        
+        //BOOL result = Bool_val(res);
+        CAMLreturn0;
+    });
+}
 
 void startCoq() {
     camlQueue = dispatch_queue_create("jp.sou.Coq4iPad", NULL);
@@ -71,18 +85,37 @@ void startCoq() {
 
     });
 
+    startCoqBody();
+}
+
+void readStdout(void (^cb)(NSString*)) {
     dispatch_async(camlQueue, ^{
         CAMLparam0();
         CAMLlocal1(res);
-        NSString* coqroot = coqRoot();
-        const char* path = [coqroot cStringUsingEncoding:NSASCIIStringEncoding];
         
-        value* startFunc = caml_named_value("start");
-        res = caml_callback(*startFunc, caml_copy_string(path));
+        value* func = caml_named_value("read_stdout");
+        res = caml_callback(*func, Val_unit);
         
-        //BOOL result = Bool_val(res);
+        const char* cmsg = String_val(res);
+        NSString* msg = [NSString stringWithUTF8String:cmsg];
+        cb(msg);
         CAMLreturn0;
     });
+}
 
-    
+void eval(NSString* str, void (^cb)(BOOL, NSString*)) {
+    dispatch_async(camlQueue, ^{
+        CAMLparam0();
+        CAMLlocal1(result_);
+        NSLog(@"eval:%@", str);
+        const char* strln = [[str stringByAppendingString:@"\n"] UTF8String];
+        result_ = caml_callback(*caml_named_value("eval"), caml_copy_string(strln));
+        BOOL success = Int_val(Field(result_,0));
+        NSString* msg = [NSString stringWithUTF8String:String_val(Field(result_, 1))];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            cb(success, msg);
+        });
+        NSLog(@"eval done");
+        CAMLreturn0;
+    });
 }

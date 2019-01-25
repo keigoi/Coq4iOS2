@@ -20,6 +20,7 @@
 		594BFE132181CF2B000E3920 /* lzmaSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 594BFE122181CF2B000E3920 /* lzmaSDK.framework */; };
 		5977C6C52181B80500EBDEE4 /* coqios.o in Frameworks */ = {isa = PBXBuildFile; fileRef = 5977C6C42181B80500EBDEE4 /* coqios.o */; };
 		5977C6D72181C45800EBDEE4 /* coq-8.8.2-standard-libs-for-coq4ios.7z in Resources */ = {isa = PBXBuildFile; fileRef = 5977C6D62181C45700EBDEE4 /* coq-8.8.2-standard-libs-for-coq4ios.7z */; };
+		59EFEB5721E5C23400309351 /* dup.m in Sources */ = {isa = PBXBuildFile; fileRef = 59EFEB5621E5C23400309351 /* dup.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,8 @@
 		5977C6C42181B80500EBDEE4 /* coqios.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = coqios.o; path = "coq-src/coqios.o"; sourceTree = SOURCE_ROOT; };
 		5977C6D22181C1BB00EBDEE4 /* lzmaSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = lzmaSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5977C6D62181C45700EBDEE4 /* coq-8.8.2-standard-libs-for-coq4ios.7z */ = {isa = PBXFileReference; lastKnownFileType = file; path = "coq-8.8.2-standard-libs-for-coq4ios.7z"; sourceTree = SOURCE_ROOT; };
+		59EFEB5621E5C23400309351 /* dup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = dup.m; sourceTree = "<group>"; };
+		59EFEB5821E5C24800309351 /* dup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dup.h; sourceTree = "<group>"; };
 		830D8F0F2186E45D00F690DD /* libunix.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libunix.a; path = "../../.opam1.2/4.04.0/ios-sysroot/lib/ocaml/libunix.a"; sourceTree = "<group>"; };
 		830D8F102186E45D00F690DD /* libbigarray.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbigarray.a; path = "../../.opam1.2/4.04.0/ios-sysroot/lib/ocaml/libbigarray.a"; sourceTree = "<group>"; };
 		830D8F112186E45D00F690DD /* libasmrun.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libasmrun.a; path = "../../.opam1.2/4.04.0/ios-sysroot/lib/ocaml/libasmrun.a"; sourceTree = "<group>"; };
@@ -101,6 +104,8 @@
 				590F259721802C4000D41FB3 /* CQ_stubs.m */,
 				590F259A21802C4000D41FB3 /* CQ_convert.h */,
 				590F259B21802C4000D41FB3 /* CQ_convert.m */,
+				59EFEB5821E5C24800309351 /* dup.h */,
+				59EFEB5621E5C23400309351 /* dup.m */,
 				830D8F112186E45D00F690DD /* libasmrun.a */,
 				830D8F102186E45D00F690DD /* libbigarray.a */,
 				830D8F142186E45D00F690DD /* libcamlstr.a */,
@@ -194,6 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				590F24FD21802A6000D41FB3 /* ViewController.m in Sources */,
+				59EFEB5721E5C23400309351 /* dup.m in Sources */,
 				590F259C21802C4000D41FB3 /* CQ_stubs.m in Sources */,
 				590F25A121802C6100D41FB3 /* CQUtil.m in Sources */,
 				590F250821802A6200D41FB3 /* main.m in Sources */,

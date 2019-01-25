@@ -8,7 +8,10 @@
 
 #ifndef CoqUtil_h
 #define CoqUtil_h
+#import <UIKit/UIKit.h>
 
 void startCoq(void);
+void readStdout(void (^cb)(NSString*));
+void eval(NSString* str, void (^cb)(BOOL, NSString*));
 
 #endif /* CoqUtil_h */
