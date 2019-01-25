@@ -89,9 +89,7 @@ popd
 
 ## CamlP5 のソースをダウンロードして iOS 向けビルドしてインストール
 
-CamlP5 は ocamlfind を使わないので ocaml-ios に直接パスを通す．
-
-(ホストOCaml にパスが通っているとうまくいかない. リンク時に警告)
+CamlP5 は ocamlfind を使わないので ocaml-ios に直接パスを通す (ホストOCaml にパスが通っているとうまくいかない. リンク時に警告)．
 
 ```
 git clone -b ios https://github.com/keigoi/camlp5.git camlp5-ios
@@ -125,9 +123,9 @@ coqdep-boot はホスト側で動くので OCAMLFIND_TOOLCHAIN を リセット�
 ```
 cd coq-src
 
-unset OCAMLFIND_TOOLCHAIN
 export ORIG_PATH=$PATH
 export PATH=~/.opam1.2/4.04.0/bin:$ORIG_PATH
+unset OCAMLFIND_TOOLCHAIN
 
 ./configure -local -with-doc no -coqide no -natdynlink no
 make -j8 bin/coqdep_boot
@@ -148,9 +146,9 @@ git checkout clib
 ## Coq をクロスコンパイルする
 
 ```
-export OCAMLFIND_TOOLCHAIN=ios
 export ORIG_PATH=$PATH
-export PATH=~/.opam1.2/4.04.0/bin:$ORIG_PATH # <-- ??
+export PATH=~/.opam1.2/4.04.0/bin:$ORIG_PATH
+export OCAMLFIND_TOOLCHAIN=ios
 
 ./configure -local -with-doc no -coqide no -natdynlink no
 VERBOSE=1 make -j8 -f Makefile.build coqios.o
