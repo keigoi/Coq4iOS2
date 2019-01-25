@@ -5,6 +5,8 @@ module L = Ploc
 module V = Vernac
 module VE = Vernacexpr
 
+let orig_stdout = ref stdout
+
 let coqstate = ref None
 let coqopts : Coqargs.coq_cmdopts option ref = ref None
 let state () =
@@ -15,6 +17,50 @@ let opts () =
   match !coqopts with
   | Some o -> o
   | None -> raise Not_found
+
+let init_stdout,read_stdout =
+  let out_buff = Buffer.create 1024 (*magic number*) in
+  let out_ft = Format.formatter_of_buffer out_buff in
+  let deep_out_ft = Format.formatter_of_buffer out_buff in
+  let inp,outp = Unix.pipe () in
+  let inp_chan = Unix.in_channel_of_descr inp in
+  let _ = Topfmt.set_gp deep_out_ft Topfmt.deep_gp in
+  (fun () ->
+     flush_all ();
+     orig_stdout := Unix.out_channel_of_descr (Unix.dup Unix.stdout);
+     Unix.dup2 outp Unix.stdout;
+     Unix.dup2 outp Unix.stderr;
+     Topfmt.std_ft := out_ft;
+     Topfmt.err_ft := out_ft;
+     Topfmt.deep_ft := deep_out_ft;
+     set_binary_mode_out !orig_stdout true;
+     set_binary_mode_in stdin true;
+  ),
+  (fun () ->
+    flush_all ();
+    Unix.set_nonblock inp;
+    begin
+      try
+        let bufstr = Bytes.create 1024 (*magic number*)
+        in
+        let rec loop () =
+          let count  = input inp_chan bufstr 0 (Bytes.length bufstr) in
+          Buffer.add_bytes out_buff (Bytes.sub bufstr 0 count);
+          if count = Bytes.length bufstr then
+            loop () else
+            ()
+        in loop ()
+      with
+          End_of_file -> ()
+        | Unix.Unix_error(Unix.EAGAIN,_,_)
+        | Unix.Unix_error(Unix.EWOULDBLOCK,_,_)
+        | Sys_blocked_io -> ()
+    end;
+    Unix.clear_nonblock inp;
+    Format.pp_print_flush out_ft ();
+    let r = Buffer.contents out_buff in
+    Buffer.clear out_buff; r)
+
 
 
 let parsable_of_string str = Pcoq.Gram.parsable (Stream.of_string str)
