@@ -69,27 +69,37 @@ opam1.2 install -j8 camlp5.7.06
 
 ## CamlP5 に必要なダミーの Dynlinks モジュールをインストールする
 
+OCAMLFIND_TOOLCHAIN を ios にセットしてコンパイルする．
+
 ```
 pushd /tmp
 wget https://raw.githubusercontent.com/coq/coq/v8.8/dev/dynlink.ml
+
 export ORIG_PATH=$PATH
 export PATH=~/.opam1.2/4.04.0/bin:$ORIG_PATH
-ocamlfind -toolchain ios ocamlc -a -o dynlink.cma dynlink.ml
-ocamlfind -toolchain ios ocamlopt -a -o dynlink.cmxa dynlink.ml
+export OCAMLFIND_TOOLCHAIN=ios
+
+ocamlfind ocamlc -a -o dynlink.cma dynlink.ml
+ocamlfind ocamlopt -a -o dynlink.cmxa dynlink.ml
 cp -i dynlink.* `ocamlfind -toolchain ios ocamlc -where`
 export PATH=$ORIG_PATH
+unset OCAMLFIND_TOOLCHAIN
 popd
 ```
 
 ## CamlP5 のソースをダウンロードして iOS 向けビルドしてインストール
 
-(ホストOCaml にパスが通っているとうまくいかない リンク時に警告)
+CamlP5 は ocamlfind を使わないので ocaml-ios に直接パスを通す．
+
+(ホストOCaml にパスが通っているとうまくいかない. リンク時に警告)
 
 ```
 git clone -b ios https://github.com/keigoi/camlp5.git camlp5-ios
 pushd camlp5-ios
+
 export ORIG_PATH=$PATH
 export PATH=~/.opam1.2/4.04.0/ios-sysroot/bin:$ORIG_PATH
+
 ./configure
 make -j8 world.opt
 make install
@@ -110,13 +120,15 @@ git submodule update --init
 
 ## coqdep-boot  だけビルドする
 
-```
-export OPAMROOT=~/.opam1.2
+coqdep-boot はホスト側で動くので OCAMLFIND_TOOLCHAIN を リセットしてコンパイルする．
 
+```
 cd coq-src
+
 unset OCAMLFIND_TOOLCHAIN
 export ORIG_PATH=$PATH
 export PATH=~/.opam1.2/4.04.0/bin:$ORIG_PATH
+
 ./configure -local -with-doc no -coqide no -natdynlink no
 make -j8 bin/coqdep_boot
 export PATH=$ORIG_PATH
@@ -144,6 +156,7 @@ export PATH=~/.opam1.2/4.04.0/bin:$ORIG_PATH # <-- ??
 VERBOSE=1 make -j8 -f Makefile.build coqios.o
 
 export PATH=$ORIG_PATH
+unset OCAMLFIND_TOOLCHAIN
 ```
 
 # Coq4iOS をビルドする
