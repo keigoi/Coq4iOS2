@@ -98,7 +98,10 @@ void readStdout(void (^cb)(NSString*)) {
         
         const char* cmsg = String_val(res);
         NSString* msg = [NSString stringWithUTF8String:cmsg];
-        cb(msg);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            cb(msg);
+        });
         CAMLreturn0;
     });
 }
