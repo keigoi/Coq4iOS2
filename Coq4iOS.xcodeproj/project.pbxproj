@@ -23,6 +23,7 @@
 		8361D8B0219000E700E04C48 /* libcamlstr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8361D8AA219000E700E04C48 /* libcamlstr.a */; };
 		8361D8C22190060200E04C48 /* CoqUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8361D8C12190060200E04C48 /* CoqUtil.m */; };
 		8361D8C621900AB400E04C48 /* lzmaSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8361D8C521900AB400E04C48 /* lzmaSDK.framework */; };
+		83BE8F4622003CEE00E10C73 /* GoalAreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BE8F4522003CEE00E10C73 /* GoalAreaViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		8361D8C12190060200E04C48 /* CoqUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoqUtil.m; sourceTree = "<group>"; };
 		8361D8C32190061400E04C48 /* CoqUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoqUtil.h; sourceTree = "<group>"; };
 		8361D8C521900AB400E04C48 /* lzmaSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = lzmaSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		83BE8F4522003CEE00E10C73 /* GoalAreaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalAreaViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				830D8F99218FFD8000F690DD /* AppDelegate.swift */,
 				830D8F9B218FFD8000F690DD /* MasterViewController.swift */,
 				830D8F9D218FFD8000F690DD /* DetailViewController.swift */,
+				83BE8F4522003CEE00E10C73 /* GoalAreaViewController.swift */,
 				8361D8C32190061400E04C48 /* CoqUtil.h */,
 				8361D8C12190060200E04C48 /* CoqUtil.m */,
 				8361D8B52190017100E04C48 /* Coq4iOS-Bridging-Header.h */,
@@ -191,6 +194,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				830D8F9E218FFD8000F690DD /* DetailViewController.swift in Sources */,
+				83BE8F4622003CEE00E10C73 /* GoalAreaViewController.swift in Sources */,
 				830D8F9C218FFD8000F690DD /* MasterViewController.swift in Sources */,
 				8361D8C22190060200E04C48 /* CoqUtil.m in Sources */,
 				830D8F9A218FFD8000F690DD /* AppDelegate.swift in Sources */,
