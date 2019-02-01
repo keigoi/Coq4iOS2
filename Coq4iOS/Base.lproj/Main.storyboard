@@ -217,14 +217,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cAu-D6-5eg">
-                                <rect key="frame" x="114" y="332" width="72" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="表示//intro"/>
-                                <connections>
-                                    <action selector="introButton:" destination="xdR-5R-dnq" eventType="touchDown" id="m5T-Uw-tgP"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
@@ -233,7 +225,6 @@
                     <connections>
                         <outlet property="dragLabel" destination="ZVR-4T-dE8" id="olI-I0-sqy"/>
                         <outlet property="dropZone" destination="gYn-bX-9r6" id="Jtq-5N-HNl"/>
-                        <outlet property="intro" destination="cAu-D6-5eg" id="9v3-9v-adt"/>
                         <outlet property="pan" destination="68o-em-Xm6" id="b6Y-ak-fXR"/>
                         <outlet property="textView" destination="RhQ-He-ZwT" id="Mh5-8H-b1E"/>
                     </connections>
@@ -241,7 +232,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o9J-bu-rHu" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="68o-em-Xm6">
                     <connections>
-                        <action selector="panGes:" destination="xdR-5R-dnq" id="SB1-Yc-SVc"/>
+                        <action selector="panGes:" destination="xdR-5R-dnq" id="tjN-ry-H2R"/>
                     </connections>
                 </panGestureRecognizer>
             </objects>

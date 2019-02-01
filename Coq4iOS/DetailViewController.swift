@@ -30,6 +30,17 @@ class DetailViewController: UIViewController {
         readStdout({(msg:String?) -> Void in
             fputs(msg, stderr)
         });
+//        let goalAreaController = childViewControllers[0] as! GoalAreaViewController
+//        eval("Theorem modus_ponens: forall (A B: Prop), (A -> B) -> A -> B.", {(res:Bool, ans:String?) -> Void in
+//            fputs(ans, stderr);
+//            goalAreaController.textView.text = ans!
+//            self.scriptArea.text = ans
+//        });
+//        eval("intro .", {(res:Bool, ans:String?) -> Void in
+//            fputs(ans, stderr);
+//            goalAreaController.textView.text = ans!
+//            self.scriptArea.text = ans
+//        });
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,7 +63,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var runButton: UIButton!
     @IBOutlet weak var runText: UITextField!
     
-    var textFieldString = "ai"
+    var textFieldString = ""
     
     @IBAction func runAction(_ sender: Any) {
         // TextField から文字を取得
@@ -69,13 +80,9 @@ class DetailViewController: UIViewController {
         let goalAreaController = childViewControllers[0] as! GoalAreaViewController
         eval(str, {(res:Bool, ans:String?) -> Void in
             fputs(ans, stderr);
-            //goalAreaController.evalAns = ans!
-        });
-        eval("intros.", {(res:Bool, ans:String?) -> Void in
-            fputs(ans, stderr);
-            self.scriptArea.insertText("intros." + "\n")
             goalAreaController.textView.text = ans!
         });
+
     }
 
     
