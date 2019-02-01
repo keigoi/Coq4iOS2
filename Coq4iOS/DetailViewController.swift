@@ -74,7 +74,7 @@ class DetailViewController: UIViewController {
         eval("intros.", {(res:Bool, ans:String?) -> Void in
             fputs(ans, stderr);
             self.scriptArea.insertText("intros." + "\n")
-            goalAreaController.evalAns = ans!
+            goalAreaController.textView.text = ans!
         });
     }
 
