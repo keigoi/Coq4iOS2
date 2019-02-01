@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		59386C3421FAF644008206D2 /* coqios.o in Frameworks */ = {isa = PBXBuildFile; fileRef = 59386C3321FAF644008206D2 /* coqios.o */; };
 		59386C3621FAF7C7008206D2 /* coq-8.8.2-standard-libs-for-coq4ios.7z in Resources */ = {isa = PBXBuildFile; fileRef = 59386C3521FAF678008206D2 /* coq-8.8.2-standard-libs-for-coq4ios.7z */; };
+		59AD6D1B22049975000C2F27 /* Worker.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AD6D1A22049975000C2F27 /* Worker.m */; };
 		830D8F9A218FFD8000F690DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830D8F99218FFD8000F690DD /* AppDelegate.swift */; };
 		830D8F9C218FFD8000F690DD /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830D8F9B218FFD8000F690DD /* MasterViewController.swift */; };
 		830D8F9E218FFD8000F690DD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830D8F9D218FFD8000F690DD /* DetailViewController.swift */; };
@@ -29,6 +30,8 @@
 /* Begin PBXFileReference section */
 		59386C3321FAF644008206D2 /* coqios.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; name = coqios.o; path = "coq-src/coqios.o"; sourceTree = SOURCE_ROOT; };
 		59386C3521FAF678008206D2 /* coq-8.8.2-standard-libs-for-coq4ios.7z */ = {isa = PBXFileReference; lastKnownFileType = file; path = "coq-8.8.2-standard-libs-for-coq4ios.7z"; sourceTree = SOURCE_ROOT; };
+		59AD6D1A22049975000C2F27 /* Worker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Worker.m; sourceTree = "<group>"; };
+		59AD6D1C2204998A000C2F27 /* Worker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Worker.h; sourceTree = "<group>"; };
 		830D8F96218FFD8000F690DD /* Coq4iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coq4iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		830D8F99218FFD8000F690DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		830D8F9B218FFD8000F690DD /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +98,8 @@
 				83BE8F4522003CEE00E10C73 /* GoalAreaViewController.swift */,
 				8361D8C32190061400E04C48 /* CoqUtil.h */,
 				8361D8C12190060200E04C48 /* CoqUtil.m */,
+				59AD6D1C2204998A000C2F27 /* Worker.h */,
+				59AD6D1A22049975000C2F27 /* Worker.m */,
 				8361D8B52190017100E04C48 /* Coq4iOS-Bridging-Header.h */,
 				830D8F9F218FFD8000F690DD /* Main.storyboard */,
 				830D8FA2218FFD8100F690DD /* Assets.xcassets */,
@@ -194,6 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				830D8F9E218FFD8000F690DD /* DetailViewController.swift in Sources */,
+				59AD6D1B22049975000C2F27 /* Worker.m in Sources */,
 				83BE8F4622003CEE00E10C73 /* GoalAreaViewController.swift in Sources */,
 				830D8F9C218FFD8000F690DD /* MasterViewController.swift in Sources */,
 				8361D8C22190060200E04C48 /* CoqUtil.m in Sources */,

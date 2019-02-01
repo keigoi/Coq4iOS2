@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "CoqUtil.h"
 #import "LZMASDK/LZMAExtractor.h"
+#import "Worker.h"
 #include <libgen.h> // dirname
 
 #include <caml/alloc.h>
@@ -21,7 +22,9 @@
 #include <caml/callback.h>
 #include <caml/threads.h>
 
-static dispatch_queue_t camlQueue;
+#undef alloc
+
+static Worker* worker;
 
 
 static NSString* coqRoot() {
@@ -41,7 +44,7 @@ static NSString* coqRoot() {
 }
 
 static void startCoqBody() {
-    dispatch_async(camlQueue, ^{
+    [worker enqueue:^{
         CAMLparam0();
         CAMLlocal1(res);
         NSString* coqroot = coqRoot();
@@ -52,13 +55,14 @@ static void startCoqBody() {
         
         //BOOL result = Bool_val(res);
         CAMLreturn0;
-    });
+    }];
 }
 
 void startCoq() {
-    camlQueue = dispatch_queue_create("jp.sou.Coq4iPad", NULL);
+    worker = [[Worker alloc] init];
+    [worker start];
     
-    dispatch_async(camlQueue, ^{
+    [worker enqueue:^{
         NSLog(@"startRuntime");
         const char* argv[] = {
             "coqlib",
@@ -66,9 +70,9 @@ void startCoq() {
         };
         caml_main((char**)argv);
         NSLog(@"startRuntime done");
-    });
+    }];
     
-    dispatch_async(camlQueue, ^{
+    [worker enqueue:^{
         NSString* archivePath =
             [[NSBundle mainBundle]
              pathForResource:@"coq-8.8.2-standard-libs-for-coq4ios.7z"
@@ -83,13 +87,13 @@ void startCoq() {
             dirName:coqRootPath
             preserveDir:TRUE];
 
-    });
+    }];
 
     startCoqBody();
 }
 
 void readStdout(void (^cb)(NSString*)) {
-    dispatch_async(camlQueue, ^{
+    [worker enqueue:^{
         CAMLparam0();
         CAMLlocal1(res);
         
@@ -103,11 +107,11 @@ void readStdout(void (^cb)(NSString*)) {
             cb(msg);
         });
         CAMLreturn0;
-    });
+    }];
 }
 
 void eval(NSString* str, void (^cb)(BOOL, NSString*)) {
-    dispatch_async(camlQueue, ^{
+    [worker enqueue:^{
         CAMLparam0();
         CAMLlocal1(result_);
         NSLog(@"eval:%@", str);
@@ -120,5 +124,5 @@ void eval(NSString* str, void (^cb)(BOOL, NSString*)) {
         });
         NSLog(@"eval done");
         CAMLreturn0;
-    });
+    }];
 }
