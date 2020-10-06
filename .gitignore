@@ -28,9 +28,6 @@ setup.log
 \#*
 \.\#*
 
-# jbuilder creates/updates .merlin
-.merlin
-
 *~
 
 .DS_Store

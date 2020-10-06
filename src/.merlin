@@ -1,0 +1,36 @@
+S .
+S ../coq-src/clib/
+S ../coq-src/lib/
+S ../coq-src/kernel/
+S ../coq-src/intf/
+S ../coq-src/library/
+S ../coq-src/engine/
+S ../coq-src/pretyping/
+S ../coq-src/interp/
+S ../coq-src/proofs/
+S ../coq-src/parsing/
+S ../coq-src/printing/
+S ../coq-src/tactics/
+S ../coq-src/vernac/
+S ../coq-src/stm/
+S ../coq-src/toplevel/
+
+B .
+B ../coq-src/clib/
+B ../coq-src/lib/
+B ../coq-src/kernel/
+B ../coq-src/intf/
+B ../coq-src/library/
+B ../coq-src/engine/
+B ../coq-src/pretyping/
+B ../coq-src/interp/
+B ../coq-src/proofs/
+B ../coq-src/parsing/
+B ../coq-src/printing/
+B ../coq-src/tactics/
+B ../coq-src/vernac/
+B ../coq-src/stm/
+B ../coq-src/toplevel/
+
+PKG camlp5
+FLG -rectypes

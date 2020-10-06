@@ -12,6 +12,7 @@ sh install.sh
 `~/.zprofile` や `~/.bash_profile` に以下を追記しておく．
 
 ```sh
+export OCAMLPARAM="_,bin-annot=1" # コンパイル時に .cmt を生成する (Merlin での開発用)
 export OPAMKEEPBUILDDIR=1 # ビルド後に中間生成物を削除しない．ディスク領域を圧迫するかも
 export OPAMJOBS=8 # 並列ビルド. コア数x2
 ```
