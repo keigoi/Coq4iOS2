@@ -1,35 +1,29 @@
 # Coq4iOS (rebooted)
 
-暫定のビルド方法を書いておく
+# OPAM の入手
 
-# OPAM 1.2 の入手
-
-(最新は OPAM 2.0 だが OCaml のクロスコンパイル環境が OPAM 1.2 であるためそっちを入れる。そのうち 2.0 にしたい)
-
+```sh
+curl -o install.sh https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh
+sh install.sh
 ```
-wget -O /usr/local/bin/opam1.2  https://github.com/ocaml/opam/releases/download/1.2.2/opam-1.2.2-x86_64-Darwin
-chmod +x /usr/local/bin/opam1.2
+
+## OPAM の設定
+
+`~/.zprofile` や `~/.bash_profile` に以下を追記しておく．
+
+```sh
+export OPAMKEEPBUILDDIR=1 # ビルド後に中間生成物を削除しない．ディスク領域を圧迫するかも
+export OPAMJOBS=8 # 並列ビルド. コア数x2
 ```
 
 ## OPAM の初期化
 
-環境変数の設定．これはこの手順で入れた OPAM 1.2 を使うのに必要な環境変数の設定なので途中でターミナルを閉じたら再び入れること：
+OPAM を初期化して (`~/.opam` を作り)，スイッチ ios を OCaml 4.04.0 で作る
 
-```
-export OPAMROOT=~/.opam1.2
-```
-
-OPAM の初期化
-
-```
-opam1.2 init -j8 --comp=4.04.0
-```
-
-OCaml にパスが通ってない状態
-
-```
-$ ocaml
-ocaml: error: Cannot execute ocaml: No such file or directory
+```sh
+opam init --bare -y # オプション -y は .bash_profile 等を書き換えて シェルで OPAM を使いやすくする
+opam switch create ios 4.04.0
+eval `opam env`
 ```
 
 # OCaml-iOS を入れる
@@ -37,124 +31,49 @@ ocaml: error: Cannot execute ocaml: No such file or directory
 まず opam-cross-ios を参照レポに追加
 
 ```
-opam1.2 repository add ios https://github.com/ocaml-cross/opam-cross-ios.git
+opam repository add ios https://github.com/keigoi/opam-cross-ios.git
 ```
+
+## iOS SDK のバージョンを調べる
+
+- `/Applications/Xcode.app/Contents/Developer//Platforms/iPhoneOS.platform/Developer/SDKs/`
+- `/Applications/Xcode.app/Contents/Developer//Platforms/iPhoneSimulator.platform/Developer/SDKs/`
+
+`iPhoneOS13.4.sdk` や `iPhoneSimulator13.4.sdk` の 13.4 の部分がバージョン番号．
+
 
 ## OCaml-iOS のコンパイル  (シミュレータ版)
 
-```
-ARCH=amd64 SUBARCH=x86_64 PLATFORM=iPhoneSimulator SDK=11.3 VER=8.0 opam1.2 install conf-ios
-```
-
-opam1.2 install ocaml-ios64 は， system() を参照するところで止まってうまくいかない．
-代わりに私のリポジトリを使う．
+`conf-ios` を入れる．以下の `SDK=` には上で調べた iOS の SDK のバージョン
 
 ```
-git clone -b 4.04.0+ios+XCode9.3.1 https://github.com/keigoi/ocaml.git ocaml-ios64.4.04.0
-cd ocaml-ios64.4.04.0
-opam1.2 pin add ocaml-ios64 .
+(export ARCH=amd64 SUBARCH=x86_64 PLATFORM=iPhoneSimulator SDK=13.4 VER=8.0 && opam config set conf-ios-arch $ARCH && opam install conf-ios)
 ```
 
 ```
-opam1.2 install ocaml-ios
+opam install -y ocaml-ios64.4.04.0
 ```
+
 
 # ホストの CamlP5 を入れる
 
 ```
-opam1.2 install -j8 camlp5.7.06
+opam install -y camlp5.7.06
 ```
 
 # ターゲットの CamlP5 を入れる
 
-## CamlP5 に必要なダミーの Dynlinks モジュールをインストールする
-
-OCAMLFIND_TOOLCHAIN を ios にセットしてコンパイルする．
-
 ```
-pushd /tmp
-wget https://raw.githubusercontent.com/coq/coq/v8.8/dev/dynlink.ml
-
-export ORIG_PATH=$PATH
-export PATH=~/.opam1.2/4.04.0/bin:$ORIG_PATH
-export OCAMLFIND_TOOLCHAIN=ios
-
-ocamlfind ocamlc -a -o dynlink.cma dynlink.ml
-ocamlfind ocamlopt -a -o dynlink.cmxa dynlink.ml
-cp -i dynlink.* `ocamlfind -toolchain ios ocamlc -where`
-export PATH=$ORIG_PATH
-unset OCAMLFIND_TOOLCHAIN
-popd
+opam install -y camlp5-ios.7.06
 ```
-
-## CamlP5 のソースをダウンロードして iOS 向けビルドしてインストール
-
-CamlP5 は ocamlfind を使わないので ocaml-ios に直接パスを通す (ホストOCaml にパスが通っているとうまくいかない. リンク時に警告)．
-
-```
-git clone -b ios https://github.com/keigoi/camlp5.git camlp5-ios
-pushd camlp5-ios
-
-export ORIG_PATH=$PATH
-export PATH=~/.opam1.2/4.04.0/ios-sysroot/bin:$ORIG_PATH
-
-./configure
-make -j8 world.opt
-make install
-ln -s ~/.opam1.2/4.04.0/ios-sysroot/lib/ocaml/camlp5 ~/.opam1.2/4.04.0/ios-sysroot/lib/
-export PATH=$ORIG_PATH
-popd
-```
-
-(最後のやつは iOS 側の ocamlfind でうまく参照するのに必要 FIXME)
 
 # このリポジトリを clone して Coq をクロスコンパイルする
 
 ```
 git clone https://github.com/keigoi/Coq4iOS2.git
 cd Coq4iOS2
-git submodule update --init
-```
 
-## coqdep-boot  だけビルドする
-
-coqdep-boot はホスト側で動くので OCAMLFIND_TOOLCHAIN を リセットしてコンパイルする．
-
-```
-cd coq-src
-
-export ORIG_PATH=$PATH
-export PATH=~/.opam1.2/4.04.0/bin:$ORIG_PATH
-unset OCAMLFIND_TOOLCHAIN
-
-./configure -local -with-doc no -coqide no -natdynlink no
-make -j8 bin/coqdep_boot
-export PATH=$ORIG_PATH
-```
-
-なぜかこいつらだけ再コンパイルされないので消す
-
-```
-rm clib/minisys.*
-rm clib/segmenttree.*
-rm clib/unicode.*
-rm clib/unicodetable.*
-git checkout clib
-```
-
-
-## Coq をクロスコンパイルする
-
-```
-export ORIG_PATH=$PATH
-export PATH=~/.opam1.2/4.04.0/bin:$ORIG_PATH
-export OCAMLFIND_TOOLCHAIN=ios
-
-./configure -local -with-doc no -coqide no -natdynlink no
-VERBOSE=1 make -j8 -f Makefile.build coqios.o
-
-export PATH=$ORIG_PATH
-unset OCAMLFIND_TOOLCHAIN
+./build-ios-obj.sh
 ```
 
 # Coq4iOS をビルドする
