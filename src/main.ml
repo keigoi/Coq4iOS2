@@ -153,11 +153,8 @@ let string_of_compile_exn (file, (_,_,loc), exn) =
  *     print_endline (string_of_compile_exn (file,info,exn));
  *     raise exn *)
 
-(* let rewind i =
- *   try
- *     Backtrack.back i
- *   with
- *     Backtrack.Invalid -> 0 *)
+let rewind i =
+    ignore (eval ~raw:true "Back.")
 
 let reset_initial () = eval ~raw:true "Reset Initial.\n"
 
@@ -191,4 +188,4 @@ Callback.register "reset_initial" reset_initial;
 Callback.register "read_stdout" read_stdout;
 (* Callback.register "compile" compile; *)
 (* Callback.register "parse" parse; *)
-(* Callback.register "rewind" rewind; *)
+Callback.register "rewind" rewind;
